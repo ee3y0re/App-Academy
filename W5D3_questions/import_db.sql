@@ -1,4 +1,4 @@
-PRAGMA foreign_keys = ON;
+-- PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users(
@@ -34,7 +34,7 @@ CREATE TABLE replies(
 
     FOREIGN KEY (question_id) REFERENCES questions(id),
     FOREIGN KEY (parent_id) REFERENCES replies(id),
-    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 DROP TABLE IF EXISTS question_likes;
@@ -61,11 +61,16 @@ VALUES
 INSERT INTO
     question_follows(user_id, question_id)
 VALUES
-    (SELECT id FROM users WHERE fname = 'Elhoussine', SELECT id FROM questions WHERE title = 'Lunch'),
-    (SELECT id FROM users WHERE lname = 'Montemayor', SELECT id FROM questions WHERE title = 'Lunch');
+    ((SELECT id FROM users WHERE fname = 'Elhoussine'), (SELECT id FROM questions WHERE title = 'Lunch')),
+    ((SELECT id FROM users WHERE lname = 'Montemayor'), (SELECT id FROM questions WHERE title = 'Lunch'));
 
 INSERT INTO
     replies(reply, question_id, parent_id, user_id)
 VALUES
-    ('Spaghetti!', SELECT id FROM questions WHERE title = 'Lunch', NULL, SELECT id FROM users WHERE fname = 'Abigail'),
-    ('Burrito!', SELECT id FROM questions WHERE title = 'Lunch', SELECT id FROM replies WHERE parent_id IS NULL, SELECT id FROM users WHERE lname = 'Elouardy');
+    ('Spaghetti!', (SELECT id FROM questions WHERE title = 'Lunch'), NULL, (SELECT id FROM users WHERE fname = 'Abigail')),
+    ('Burrito!', (SELECT id FROM questions WHERE title = 'Lunch'), (SELECT id FROM replies WHERE parent_id IS NULL), (SELECT id FROM users WHERE lname = 'Elouardy'));
+
+INSERT INTO
+    question_likes(user_id, question_id)
+VALUES
+    ((SELECT id FROM users WHERE fname = 'Elhoussine'), (SELECT id FROM questions WHERE title = 'Lunch'));
