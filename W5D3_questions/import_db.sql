@@ -29,7 +29,7 @@ CREATE TABLE replies(
     id INTEGER PRIMARY KEY,
     reply TEXT NOT NULL,
     question_id INTEGER NOT NULL,
-    parent_id INTEGER NOT NULL,
+    parent_id INTEGER,
     user_id INTEGER NOT NULL,
 
     FOREIGN KEY (question_id) REFERENCES questions(id),
@@ -56,4 +56,16 @@ VALUES
 INSERT INTO
     questions(title, body)
 VALUES
-    ("Lunch", "What's for lunch?")
+    ("Lunch", "What's for lunch?");
+
+INSERT INTO
+    question_follows(user_id, question_id)
+VALUES
+    (SELECT id FROM users WHERE fname = 'Elhoussine', SELECT id FROM questions WHERE title = 'Lunch'),
+    (SELECT id FROM users WHERE lname = 'Montemayor', SELECT id FROM questions WHERE title = 'Lunch');
+
+INSERT INTO
+    replies(reply, question_id, parent_id, user_id)
+VALUES
+    ('Spaghetti!', SELECT id FROM questions WHERE title = 'Lunch', NULL, SELECT id FROM users WHERE fname = 'Abigail'),
+    ('Burrito!', SELECT id FROM questions WHERE title = 'Lunch', SELECT id FROM replies WHERE parent_id IS NULL, SELECT id FROM users WHERE lname = 'Elouardy');
