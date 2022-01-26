@@ -51,15 +51,21 @@ class User
         SQL
         data.map { |row| User.new(row) }
     end
+
+    def authored_questions
+        Question.find_by_author_id(self.id)
+    end
+
 end
 
 class Question
-    attr_accessor :id, :title, :body
+    attr_accessor :id, :title, :body, :author_id
 
     def initialize(options)
         @id = options['id']
         @title = options['title']
         @body = options['body']
+        @author_id = options['author_id']
     end
 
     def self.all
@@ -74,7 +80,7 @@ class Question
             FROM 
                 questions
             WHERE
-                id = ?
+                author_id = ?
         SQL
         data.map { |row| Question.new(row) }
     end
@@ -107,4 +113,17 @@ class Reply
         SQL
         data.map { |row| Reply.new(row) }
     end
+
+    def self.find_by_question_id(question_id)
+        data = QuestionsDatabase.instance.execute(<<-SQL, question_id)
+            SELECT 
+                * 
+            FROM 
+                replies
+            WHERE
+                question_id = ?
+        SQL
+        data.map { |row| Reply.new(row) }
+    end
+
 end

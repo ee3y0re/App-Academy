@@ -15,7 +15,10 @@ CREATE TABLE users(
 CREATE TABLE questions (
     id INTEGER PRIMARY KEY,
     title VARCHAR(255),
-    body TEXT NOT NULL
+    body TEXT NOT NULL,
+    author_id INTEGER NOT NULL,
+
+    FOREIGN KEY (author_id) REFERENCES users(id)
 );
 
 CREATE TABLE question_follows (
@@ -55,9 +58,9 @@ VALUES
     ("Abigail", "Montemayor");
 
 INSERT INTO
-    questions(title, body)
+    questions(title, body, author_id)
 VALUES
-    ("Lunch", "What's for lunch?");
+    ("Lunch", "What's for lunch?", (SELECT id FROM users WHERE fname = 'Abigail'));
 
 INSERT INTO
     question_follows(user_id, question_id)
