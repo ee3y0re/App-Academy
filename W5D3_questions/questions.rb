@@ -170,15 +170,61 @@ class Reply
         data.map { |row| Question.new(row) }
     end
 
+    # def self.find(id)
+    #     data = QuestionsDatabase.instance.execute(<<-SQL, id)
+    #         SELECT 
+    #             * 
+    #         FROM 
+    #             replies
+    #         WHERE
+    #             id = ?
+    #     SQL
+    #     found = nil
+    #     data.each do |row| 
+    #         found = Reply.new(row)
+    #     end
+    #     found
+    # end
+
     def parent_reply
-        data = QuestionsDatabase.instance.execute(<<-SQL)
+        data = QuestionsDatabase.instance.execute(<<-SQL, self.parent_id)
             SELECT 
                 * 
             FROM 
                 replies
             WHERE
-                parent_id IS NULL
+                id = ?
+        SQL
+        # found = nil
+        # data.each do |row| 
+        #     found = Reply.new(row)
+        # end
+        # found
+        data.map { |row| Reply.new(row) }.first
+        # Reply.find(self.parent_id)
+    end
+
+    def child_replies
+        data = QuestionsDatabase.instance.execute(<<-SQL, self.id)
+            SELECT 
+                * 
+            FROM 
+                replies
+            WHERE
+                parent_id = ?
         SQL
         data.map { |row| Reply.new(row) }
     end
+end
+
+class QuestionFollow
+
+    attr_accessor :id, :user_id, :question_id
+
+    def initialize(options)
+        @id = options['id']
+        @user_id = options['user_id']
+        @question_id = options['question_id']
+    end
+    
 end

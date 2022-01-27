@@ -71,8 +71,13 @@ VALUES
 INSERT INTO
     replies(reply, question_id, parent_id, user_id)
 VALUES
-    ('Spaghetti!', (SELECT id FROM questions WHERE title = 'Lunch'), NULL, (SELECT id FROM users WHERE fname = 'Abigail')),
-    ('Burrito!', (SELECT id FROM questions WHERE title = 'Lunch'), (SELECT id FROM replies WHERE parent_id IS NULL), (SELECT id FROM users WHERE lname = 'Elouardy'));
+    ('Spaghetti!', (SELECT id FROM questions WHERE title = 'Lunch'), NULL, (SELECT id FROM users WHERE fname = 'Abigail'));
+
+INSERT INTO
+    replies(reply, question_id, parent_id, user_id)
+VALUES
+    ('Burrito!', (SELECT id FROM questions WHERE title = 'Lunch'), (SELECT id FROM replies WHERE reply = 'Spaghetti!'), (SELECT id FROM users WHERE lname = 'Elouardy'));
+
 
 INSERT INTO
     question_likes(user_id, question_id)
