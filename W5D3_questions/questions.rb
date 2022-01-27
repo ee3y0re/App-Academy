@@ -56,6 +56,10 @@ class User
         Question.find_by_author_id(self.id)
     end
 
+    def authored_replies
+        Reply.find_by_user_id(self.id)
+    end
+
 end
 
 class Question
@@ -83,6 +87,22 @@ class Question
                 author_id = ?
         SQL
         data.map { |row| Question.new(row) }
+    end
+
+    def author
+        data = QuestionsDatabase.instance.execute(<<-SQL, self.author_id)
+            SELECT 
+                * 
+            FROM 
+                users
+            WHERE
+                id = ?
+        SQL
+        data.map { |row| User.new(row) }
+    end
+
+    def replies
+        Reply.find_by_question_id(self.id)
     end
 end
 
@@ -126,4 +146,39 @@ class Reply
         data.map { |row| Reply.new(row) }
     end
 
+    def author
+        data = QuestionsDatabase.instance.execute(<<-SQL, self.user_id)
+            SELECT 
+                * 
+            FROM 
+                users
+            WHERE
+                id = ?
+        SQL
+        data.map { |row| User.new(row) }
+    end
+
+    def question
+        data = QuestionsDatabase.instance.execute(<<-SQL, self.question_id)
+            SELECT 
+                * 
+            FROM 
+                questions
+            WHERE
+                id = ?
+        SQL
+        data.map { |row| Question.new(row) }
+    end
+
+    def parent_reply
+        data = QuestionsDatabase.instance.execute(<<-SQL)
+            SELECT 
+                * 
+            FROM 
+                replies
+            WHERE
+                parent_id IS NULL
+        SQL
+        data.map { |row| Reply.new(row) }
+    end
 end
