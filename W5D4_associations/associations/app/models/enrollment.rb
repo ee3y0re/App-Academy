@@ -19,6 +19,14 @@ class Enrollment < ApplicationRecord # joins table
     belongs_to :course,
         foreign_key: :course_id,
         primary_key: :id,
+        # SELECT
+        # * 
+        # FROM 
+        # enrollments
+        # JOIN
+        # courses
+        # ON
+        # enrollments.course_id = courses.id
         class_name: :Course
 end
 
