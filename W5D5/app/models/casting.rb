@@ -10,3 +10,8 @@ class Casting < ApplicationRecord
     primary_key: :id
 
 end
+
+
+#   t.integer "actor_id", null: false
+#   t.integer "movie_id", null: false
+#   t.integer "ord", null: false

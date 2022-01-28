@@ -13,3 +13,11 @@ class Movie < ApplicationRecord
     through: :castings,
     source: :actor
 end
+
+
+#   t.string "title", null: false
+#   t.integer "yr", null: false
+#   t.float "score", null: false
+#   t.integer "votes", null: false
+#   t.integer "director_id", null: false
+
