@@ -30,7 +30,7 @@ def prizes_from_1950
       nobels
     WHERE
       yr = 1950
-    SQL
+  SQL
 end
 
 def literature_1962
@@ -41,7 +41,7 @@ def literature_1962
     FROM
       nobels
     WHERE
-      yr = 1962 AND subject = 'Literature'
+      yr = '1962' AND subject = 'Literature'
   SQL
 end
 
@@ -65,17 +65,16 @@ def millennial_peace_prizes
     FROM
       nobels
     WHERE
-      yr >= 2000 AND subject = 'Peace'
+      subject = 'Peace' AND yr >= 2000
   SQL
 end
 
 def eighties_literature
   # Show all details (yr, subject, winner) of the Literature prize winners
   # for 1980 to 1989 inclusive.
-  # SELECT asterisk instead of yr, subject, winner because asks for all
   execute(<<-SQL)
     SELECT
-      * 
+      *
     FROM
       nobels
     WHERE
@@ -92,7 +91,7 @@ def presidential_prizes
     FROM
       nobels
     WHERE
-      winner IN ('Theodore Roosevelt', 'Woodrow Wilson', 'Jimmy Carter');
+      winner IN ('Theodore Roosevelt', 'Woodrow Wilson', 'Jimmy Carter')
   SQL
 end
 
