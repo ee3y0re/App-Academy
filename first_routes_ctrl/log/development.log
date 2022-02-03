@@ -877,3 +877,153 @@ Completed 422 Unprocessable Entity in 13ms (ActiveRecord: 5.8ms)
 ActiveRecord::RecordInvalid (Validation failed: Email can't be blank):
   
 app/controllers/users_controller.rb:11:in `create'
+Started GET "/users" for ::1 at 2022-02-02 17:02:48 -0800
+  [1m[35m (5.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/kiarash/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as */*
+  [1m[36mUser Load (26.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5
+Completed 200 OK in 143ms (Views: 50.2ms | ActiveRecord: 67.1ms)
+
+
+Started PATCH "/users/1" for ::1 at 2022-02-02 17:04:19 -0800
+Processing by UsersController#update as */*
+  Parameters: {"email"=>"'gotstrongjokesonyou@gmail.com'", "id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20
+Completed 400 Bad Request in 65ms (ActiveRecord: 14.2ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:33:in `user_params'
+app/controllers/users_controller.rb:21:in `update'
+Started PATCH "/users/1" for ::1 at 2022-02-02 17:04:56 -0800
+Processing by UsersController#update as */*
+  Parameters: {"email"=>"'gotstrongjokesonyou@gmail.com'", "name"=>"'Abs'", "id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:33:in `user_params'
+app/controllers/users_controller.rb:21:in `update'
+Started PATCH "/users/1" for ::1 at 2022-02-02 17:06:35 -0800
+Processing by UsersController#update as */*
+  Parameters: {"email"=>"'gotstrongjokesonyou@gmail.com'", "name"=>"'Abs'", "id"=>"1"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20
+Completed 400 Bad Request in 52ms (ActiveRecord: 10.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:35:in `user_params'
+app/controllers/users_controller.rb:21:in `update'
+Started PATCH "/users/1" for ::1 at 2022-02-02 17:07:41 -0800
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"email"=>"'gotstrongjokesonyou@gmail.com'"}, "id"=>"1"}
+  [1m[36mUser Load (11.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20
+  [1m[35m (9.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:21
+  [1m[36mUser Update (22.2ms)[0m  [1m[33mUPDATE "users" SET "email" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["email", "'gotstrongjokesonyou@gmail.com'"], ["updated_at", "2022-02-03 01:07:41.452878"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:21
+  [1m[35m (8.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:21
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 68ms (ActiveRecord: 51.7ms)
+
+
+Started GET "/users/1" for ::1 at 2022-02-02 17:07:41 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for ::1 at 2022-02-02 17:08:23 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for ::1 at 2022-02-02 17:08:29 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2022-02-02 17:08:34 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/2" for ::1 at 2022-02-02 17:09:56 -0800
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29
+Completed 200 OK in 72ms (Views: 1.2ms | ActiveRecord: 13.5ms)
+
+
+Started GET "/users/2" for ::1 at 2022-02-02 17:11:48 -0800
+Processing by UsersController#show as */*
+  Parameters: {"user"=>{"email"=>"'abs@gmail.com", "name"=>"'Abs'"}, "id"=>"2"}
+  [1m[36mUser Load (56.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29
+Completed 200 OK in 65ms (Views: 1.0ms | ActiveRecord: 56.0ms)
+
+
+Started GET "/users" for ::1 at 2022-02-02 17:12:11 -0800
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"email"=>"'abs@gmail.com", "name"=>"'Abs'"}}
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5
+Completed 200 OK in 20ms (Views: 16.0ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/users/1" for ::1 at 2022-02-02 17:14:09 -0800
+Processing by UsersController#show as */*
+  Parameters: {"user"=>{"email"=>"'abs@gmail.com", "name"=>"'Abs'"}, "id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29
+Completed 200 OK in 84ms (Views: 4.8ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/users/2" for ::1 at 2022-02-02 17:14:15 -0800
+Processing by UsersController#show as */*
+  Parameters: {"user"=>{"email"=>"'abs@gmail.com", "name"=>"'Abs'"}, "id"=>"2"}
+  [1m[36mUser Load (46.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29
+Completed 200 OK in 51ms (Views: 1.1ms | ActiveRecord: 46.4ms)
+
+
+Started DELETE "/users/2" for ::1 at 2022-02-02 17:16:49 -0800
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"email"=>"'abs@gmail.com", "name"=>"'Abs'"}, "id"=>"2"}
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:34
+  [1m[35m (4.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:35
+  [1m[36mUser Destroy (8.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/users_controller.rb:35
+  [1m[35m (27.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:35
+Completed 200 OK in 102ms (Views: 0.4ms | ActiveRecord: 56.9ms)
+
+
+Started GET "/users" for ::1 at 2022-02-02 17:16:58 -0800
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"email"=>"'abs@gmail.com", "name"=>"'Abs'"}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 1.3ms)
+
+
