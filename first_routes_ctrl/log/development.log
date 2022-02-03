@@ -493,3 +493,92 @@ Processing by UsersController#show as */*
 Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE DATABASE "first_routes_ctrl_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE DATABASE "first_routes_ctrl_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+Started POST "/users" for ::1 at 2022-02-02 14:59:30 -0800
+Processing by UsersController#create as */*
+  Parameters: {"a_key"=>"a_val", "b_key"=>"b_val"}
+Completed 200 OK in 29ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2022-02-02 15:13:00 -0800
+Processing by UsersController#create as */*
+  Parameters: {" id"=>"5", "some_category"=>{"a_key"=>"another_value", "a_seccond_key"=>"value", "inner_hash"=>{"key"=>"value_value"}}}
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (87.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (19.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6510507188383406565)[0m
+  ↳ bin/rails:9
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateUsers (20220202231636)
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (48.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20220202231636_create_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (6.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220202231636"]]
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (1.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (5.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-02-02 23:20:26.104705"], ["updated_at", "2022-02-02 23:20:26.104705"]]
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(6510507188383406565)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/users" for ::1 at 2022-02-02 15:32:28 -0800
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/kiarash/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as */*
+  Parameters: {" id"=>"5", "some_category"=>{"a_key"=>"another_value", "a_seccond_key"=>"value", "inner_hash"=>{"key"=>"value_value"}}}
+Completed 500 Internal Server Error in 1136ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `users' for #<UsersController:0x00007fffc4fd6350>
+Did you mean?  users_url):
+  
+app/controllers/users_controller.rb:5:in `index'
+Started GET "/users" for ::1 at 2022-02-02 15:33:07 -0800
+Processing by UsersController#index as */*
+  Parameters: {" id"=>"5", "some_category"=>{"a_key"=>"another_value", "a_seccond_key"=>"value", "inner_hash"=>{"key"=>"value_value"}}}
+  [1m[36mUser Load (12.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5
+Completed 200 OK in 68ms (Views: 23.7ms | ActiveRecord: 26.5ms)
+
+
+  [1m[35m (3.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (12.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Abs"], ["email", "get_strong@getstrong.com"], ["created_at", "2022-02-02 23:36:17.817864"], ["updated_at", "2022-02-02 23:36:17.817864"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "kishi"], ["email", "stopeatingsugar@gmail.com"], ["created_at", "2022-02-02 23:37:15.810814"], ["updated_at", "2022-02-02 23:37:15.810814"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/users" for ::1 at 2022-02-02 15:37:52 -0800
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/kiarash/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as */*
+  Parameters: {" id"=>"5", "some_category"=>{"a_key"=>"another_value", "a_seccond_key"=>"value", "inner_hash"=>{"key"=>"value_value"}}}
+  [1m[36mUser Load (8.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5
+Completed 200 OK in 455ms (Views: 60.6ms | ActiveRecord: 343.1ms)
+
+
+Started GET "/users" for ::1 at 2022-02-02 15:38:05 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5
+Completed 200 OK in 15ms (Views: 10.1ms | ActiveRecord: 2.7ms)
+
+
