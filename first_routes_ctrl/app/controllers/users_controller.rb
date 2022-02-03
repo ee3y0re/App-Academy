@@ -10,8 +10,9 @@ class UsersController < ApplicationController
         # replace the `user_attributes_here` with the actual attribute keys
         if user.save!
 			render json: user
-		else
-			render json: user.error.full_messages, status:422
+        # same 422 error even without else statement as long as it's save! and not save
+		# else
+		# 	render json: user.error.full_messages, status:422
 		end
     end
 
