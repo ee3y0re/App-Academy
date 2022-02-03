@@ -6,9 +6,10 @@ class UsersController < ApplicationController
     end
     
     def create
-        user = User.new(user_params)
+        user = User.new(user_params) #params.require(:users).permit(:username, :email)
+        #params is a nested hash require looks for the designated key and permit looks for keys within that key
         # replace the `user_attributes_here` with the actual attribute keys
-        if user.save!
+        if user.save
 			render json: user
         # same 422 error even without else statement as long as it's save! and not save
 		# else
