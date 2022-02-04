@@ -12,8 +12,9 @@ class UsersController < ApplicationController
         if user.save
 			render json: user
         # same 422 error even without else statement as long as it's save! and not save
-		# else
-		# 	render json: user.error.full_messages, status:422
+        #keep else if save is without ! so that specific error message passes through
+		else
+			render json: user.error.full_messages, status:422
 		end
     end
 
@@ -44,6 +45,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:name, :email)
+        # params.require(:user).permit(:name, :email)
+        params.require(:user).permit(:username)
     end
 end
