@@ -33,8 +33,9 @@ class UsersController < ApplicationController
 
     def destroy
         user = User.find(params[:id])
+        
         if user.destroy
-            render json: 'Bye Bye'
+            render json: "Bye Bye #{user.username}"
         else
             render json: user.errors.full_messages, status: 422
         end
