@@ -1,0 +1,28 @@
+<table>
+<tr>
+<th>
+<h1>Showing all the cats~ =^^=</h1>
+</th>
+</tr>
+<%# @cat is what we made from controller %>
+<%# 'cats' is name of partial file %>
+<%# cat: @cat is variables passing from partial %>
+<tbody>
+<tr>
+
+<%# td are columns %>
+<td> 
+<%= render 'cats_partial', cat: @cat, action: :show%>
+
+<%# non partial way %>
+<%# <ul> %>
+    <%# <li> <%= @user.username %></li> %>
+    <%# <li> <%= @user.email %></li> %>
+<%# </ul> %>
+
+</td>
+
+</tr>
+</tbody>
+
+</table>
