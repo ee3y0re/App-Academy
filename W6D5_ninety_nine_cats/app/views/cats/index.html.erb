@@ -1,0 +1,8 @@
+<h1>All them kitties ~=^u^=</h1>
+<ul>
+    <% @cats.each do |cat| %> 
+        <li><a href="<%= cat_url(cat) %>"> <%= cat.name %> </a></li>
+    <% end %>
+</ul>
+<%# control shift tilde makes returning erb tag  %>
+<a href="<%= new_cat_url %>">Create a kitty~</a>

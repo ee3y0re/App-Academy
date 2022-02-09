@@ -1,0 +1,8 @@
+<%# if controller triggers error at any point, communicate error like the following %>
+<% if flash[:errors] %>
+    <ul>
+    <% flash[:errors].each do |error| %>
+        <li><%= error %></li>
+    <% end  %>
+    </ul>
+<% end %>

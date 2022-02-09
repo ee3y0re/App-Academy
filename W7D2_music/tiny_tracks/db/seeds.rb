@@ -8,7 +8,7 @@
 
 # ActiveRecord::Base.transaction do |t|
     User.destroy_all
-    # ActiveRecord::Base.connection.reset_pk_sequence!(t)
+    # # ActiveRecord::Base.connection.reset_pk_sequence!(t)
     dum = User.create(email: "somethingdum@gmail.com", password: 'dumdumdumdum')
     dee = User.create(email: "somethingdee@gmail.com", password: 'deedeedeedee')
     doo = User.create(email: "somethingdoo@gmail.com", password: 'doodoodoodoo')

@@ -14,19 +14,45 @@
     <%# defining what is logged in %>
     <% if logged_in? %>
       <h1>Welcome to the login welcome page, <%= current_user.email %>!</h1>
-      <form action="<%#= need to fix so that session_url is with delete and not post%>" method="POST">
+
+      <form action="<%= session_url %>" method="POST">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <%# i think this is calling for the deletion of the session %>
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="Logout">
       </form>
+      <!---
+
+      <form action=<%= session_url %> method='post'>
+        <input
+          type="hidden"
+          name="_method"
+          value="delete">
+        <input
+          type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+        <input 
+          type="submit" value="Sign Out">
+      </form>
+
+      --->
     <% else %>
-      <a href="<%= new_session_url %>">Log in</a>
-      <a href="<%= session_url %>">Sign up</a>
+      <a href="<%= new_session_url%>">Log in</a>
+      <%# new user %>
+      <a href="<%= new_user_url%>">Sign up</a> 
     <% end %>
 
     <%= yield %>
 
     <%# errors %>
+    <% if flash[:errors] %>
+      <ul>
+      <% flash[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+      </ul>
+    <% end %>
+    
   </body>
 </html>

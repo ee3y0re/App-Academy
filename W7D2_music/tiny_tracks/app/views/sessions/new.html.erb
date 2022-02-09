@@ -1,2 +1,16 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<h1>Log in page :D</h1>
+<form action="<%= session_url%>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="user[email]" value="<%= @user.email %>">
+
+    <br>
+
+    <%# Password is also required %>
+    <label>Password:
+    <input type="password" name="user[password]">
+    </label>
+
+    <input type="submit" value="We are SUBMITTING this">
+</form>

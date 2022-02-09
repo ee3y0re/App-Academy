@@ -1,0 +1,33 @@
+<h1>Bio of the one and only, <%= @cat.name %></h1>
+
+<table>
+    <%#indicates a row %>
+    <tr>
+        <%#in one row, there are two column headings  %>
+        <th>Attribute</th>
+        <th>Value</th>
+    </tr>
+    <% [:age, :birth_date, :color, :sex].each do |attr_name| %>
+    <%# put tr tag to place the data inside tags into rows  %>
+    <tr> 
+        <%#table data, the first line goes with first column and second line goes with second column  %>
+        <td> <%= attr_name %>: </td>
+        <%# @cat.age, @cat.birth_date, etc.  %>
+        <td> <%= @cat.send(attr_name) %></td>
+    </tr>
+    <% end %>
+</table>
+<%# don't forget equal sign  %>
+<a href="<%= edit_cat_url(@cat) %>">Found a boo-boo?</a>
+
+<h2>Rental Requests</h2>
+<table>
+  <tr>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Status</th>
+  </tr>
+  <% @cat.rental_requests.order('start_date').each do |req| %>
+    <%= render 'req_tr', req: req %>
+  <% end %>
+</table>
