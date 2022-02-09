@@ -1,0 +1,9 @@
+<h1>TinyTracks User: <%= @user.email %></h1>
+<!---
+<ul>
+    <li>Email me at: <%= @user.email %></li>
+    <li>This is just a random li element for my entertainment</li>
+</ul>
+--->
+<%# render from 'user' which points to _user.html.erb %>
+<%= render 'user', user: @user, action: :show %>

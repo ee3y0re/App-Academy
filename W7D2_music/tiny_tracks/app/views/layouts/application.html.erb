@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TinyTracks</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <%# defining what is logged in %>
+    <% if logged_in? %>
+      <h1>Welcome to the login welcome page, <%= current_user.email %>!</h1>
+      <form action="<%#= need to fix so that session_url is with delete and not post%>" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <%# i think this is calling for the deletion of the session %>
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Logout">
+      </form>
+    <% else %>
+      <a href="<%= new_session_url %>">Log in</a>
+      <a href="<%= session_url %>">Sign up</a>
+    <% end %>
+
+    <%= yield %>
+
+    <%# errors %>
+  </body>
+</html>

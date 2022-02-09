@@ -1,0 +1,20 @@
+<h1>TinyTracks User Creation</h1>
+
+<%# IDK WHAT GOES IN ACION? WHERE ARE WE SENDING IF WE HAVE NO INDEX OR should we put index even if instructions didn't say %>
+<%# method is either get or post which is what we want to use regarding forms %>
+<%# users post doesn't require wild cards so only users_url and not users_url(@user) %>
+<form action="<%= users_url%>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="user[email]" value="<%= @user.email %>">
+
+    <br>
+
+    <%# Password is also required %>
+    <label>Password:
+    <input type="password" value="">
+    </label>
+
+    <input type="submit" value="We are SUBMITTING this">
+</form>
