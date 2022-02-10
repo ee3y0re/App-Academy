@@ -10,18 +10,19 @@ RSpec.describe UsersController, type: :controller do
     end
 
     describe "GET #show" do
-        before(:each) do
-            create(:user) 
-        end
+        # before(:each) do
+            # FactoryBot.create(:user) 
+        # end
         it 'renders the show template' do
+            user = FactoryBot.create(:user) 
             get :show, params: {id: user.id}
             expect(response).to render_template(:show)
         end
     end
 
     describe "POST #create" do
-        let(:valid_params){{users: {username: "Pikachu", password: "abcdefg"}}}
-        let(:invalid_params){{users: {nada: ""}}}
+        let(:valid_params){{user: {username: "Pikachu", password: "abcdefg"}}}
+        let(:invalid_params){{user: {nada: ""}}}
 
         context "with valid params" do
             it "redirects to user show page" do
