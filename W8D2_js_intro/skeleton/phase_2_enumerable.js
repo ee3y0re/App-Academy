@@ -11,6 +11,19 @@ Array.prototype.myMap = function(prc) {
     output.push(prc(ele));
   });
 
+  //gail's version
+  this.myEach((ele) => {
+    output.push(callback(ele));
+  })
+
+  //maggie's version ( more preferred for assessment depending on what they ask)
+  this.myEach(function (ele)) {
+    arr.push(callback(ele))
+  }
+
+  //fancy oneliner
+  this.myEach(ele => output.push(callback(ele)))
+
   return output;
 }
 
