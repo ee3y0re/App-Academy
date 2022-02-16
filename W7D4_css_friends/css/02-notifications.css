@@ -1,0 +1,8 @@
+/* PHASE 2: Notifications */
+/* Aha, you say! Positioning! Remember to create a coordinate 
+system you control, by setting its parent to relative position.*/
+
+/* notifications for me is "this shi" */
+li > ul.this-shi-list{
+    position: relative;
+}

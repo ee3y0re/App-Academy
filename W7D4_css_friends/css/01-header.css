@@ -1,0 +1,84 @@
+/* PHASE 1: Header */
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    /* might need to be 500 since i linked 500 */
+    font-weight: 400px;
+}
+
+/* full bar */
+.simply-header{
+    background-color: rgb(201, 144, 144);
+    border-bottom: 1px solid rgb(123, 151, 151);
+
+    /* idk what is the default display for this; solutions have it unlisted */
+}
+
+/* all links under full bar */
+.simply-header a {
+    display: block;
+    padding: 10px 20px;
+    
+}
+
+/* 
+To center a smaller block element inside a larger block element, you'll want to 
+set its left and right margins to auto. Since block elements cannot sit next to 
+each other normally, you're going to need to use flex. It's OK to flex things 
+inside of flexed things.
+*/
+/* header-nav */
+.all-header-links{
+    /* makes sure all links in header are on the same line rather than stacking
+    main logo link on top of side links
+    */
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    /* how far wide do you want the ?flex container? spread out */
+    width: 900px;
+    /* adds a border on left and right that is gray */
+    border-left: 1px solid rgb(123, 151, 151);
+    border-right: 1px solid rgb(123, 151, 151);
+}
+
+/* You'll want to justify your logo <h1> to the left, and the <ul> list of links
+ to the right. To get get the individual <li> next to each other you'll want to
+  again use flex*/
+
+/* header-logo */
+.main-logo-link {
+
+    /* smaller border than border left in all-header-links */
+    /* border-left: 1px solid #ccc; */
+    /* how bold and thick you want the font to be */
+    font-weight: 700;
+}
+
+/* gonna make header logo hover */
+.main-logo-link:hover {
+    background-color: rgb(123, 151, 151);
+}
+
+/* As you put paddings in place, remember that usability is important. We want 
+large click targets. Make your links block elements and add padding to them. 
+Also do not forget the hover states, this is important and gratifying feedback 
+for the user. */
+
+/* header-list */
+/* so i was almost right lol only display flex */
+.side-option-links{
+    /* without this, they stay stacked */
+    display: flex;
+}
+
+/* the direct li children of side-option-list */
+.side-option-links > li {
+    border-left: 1px solid rgb(123, 151, 151);
+
+}
+
+.side-option-links > li:hover {
+    background-color: rgb(123, 151, 151);
+}
+

@@ -252,3 +252,19 @@ NameError (undefined local variable or method `subs_url' for #<UsersController:0
   
 app/controllers/users_controller.rb:5:in `create'
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Started POST "/users" for ::1 at 2022-02-11 17:05:14 -0800
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"gaN2z4HkdB68mGa3/M33V4h56J3+IzCS1Qlqkdghh+16K2LuGNH13yQcviNCBCHNoVUhXKQ7uv1aAu8EOXE97w==", "user"=>{"username"=>"(╯°□°）╯︵ ┻━┻ ", "password"=>"[FILTERED]"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:4
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "(╯°□°）╯︵ ┻━┻ "], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = ? LIMIT ?[0m  [["session_token", "CGDIZ-kH8a4wF08MGJaHLg"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4
+  [1m[35m (0.8ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:4
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 283ms (Views: 36.7ms | ActiveRecord: 2.5ms)
+
+

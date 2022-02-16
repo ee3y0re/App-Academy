@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>App Academy Friends | PHASE 0: Reset</title>
+  <!-- font links -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <!-- stylesheet link -->
+  <!-- you need all stylesheets -->
+  <link rel="stylesheet" href="css/00-reset.css" type="text/css">
+  <link rel="stylesheet" href="css/01-header.css" type="text/css">
+</head>
+
+<!-- I'd suggest using the <header>, <nav>, <h1>, <ul> and <li> tags to express our structure. Go ahead and write the skeleton in HTML. -->
+<body>
+  <header class="simply-header">
+    <nav class="all-header-links">
+      <h1 class="main-logo-link"><a href="#">Mr. Effing Hot-shot</a></h1>
+      <ul class="side-option-links">
+        <!-- avoid adding classes to li so we can select them by parent -->
+        <li><a href="#">this bih</a></li>
+          <!-- <ul>
+            <li>this is just a test, should not be changed</li>
+          </ul> -->
+        <!-- <li>this is justa test, should change</li> -->
+        <li>
+          <a href="#">
+        <!--  02-notifications
+        We're adding notifications! Add an inline badge, inside the 
+        notifications <a> tag. Give it the reusable .badge class and style it 
+        round as a circle. You'll want to tweak the padding to get it just 
+        right.
+        -->
+            this shi
+            <strong class="inline-badge">SomeNum?</strong>
+          </a>
+<!-- For the dropdown, start by nesting a new list of notification list elements 
+inside of the original notification list element. Add it right below the <a> 
+tag. You'll see how it stretches the whole header bar down. It sort of looks 
+right, if only we could lift it out of the document flow, and have it not 
+stretch its parent. Aha, you say! Positioning! Remember to create a coordinate 
+system you control, by setting its parent to relative position. -->
+          <ul class="this-shi-list">
+            <li>Loves me</li>
+            <li>Loves me not</li>
+          </ul>
+        </li>
+        <li><a href="#">this muthafooAh</a></li>
+      </ul>
+    </nav>
+  </header>
+</body>
+
+</html>
