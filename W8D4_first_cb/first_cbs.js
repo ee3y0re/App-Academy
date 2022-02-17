@@ -49,31 +49,59 @@ class Clock {
 const clock = new Clock();
 */
 
-const readline = require('readline');
+// const readline = require('readline');
 
-reader = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+// reader = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
 
-function addNumbers(sum, numsLeft, completionCallback){
-    if (numsLeft === 0 ){
-        completionCallback(sum);
-        reader.close();
-        // return;
-    } else {
-        reader.question("Give me a number: ", answer => {
-            let num = parseInt(answer);
-            let newSum = sum + num;
-            console.log(newSum);
-            let newNumsLeft = numsLeft - 1;
-            addNumbers(newSum, newNumsLeft, completionCallback);
-        });
-    }
-};
+// function addNumbers(sum, numsLeft, completionCallback){
+//     if (numsLeft === 0 ){
+//         completionCallback(sum);
+//         reader.close();
+//         // return;
+//     } else {
+//         reader.question("Give me a number: ", answer => {
+//             let num = parseInt(answer);
+//             let newSum = sum + num;
+//             console.log(newSum);
+//             let newNumsLeft = numsLeft - 1;
+//             addNumbers(newSum, newNumsLeft, completionCallback);
+//         });
+//     }
+// };
 
 /* 
 addNumbers(0, 3, sum => console.log(`Total Sum: ${sum}`));
  */
 
 
+Function.prototype.myBind = function(context) {
+    return () => { //returns function captures this and context
+        //this = whatever function calls myBind
+        debugger
+        this.apply(context);
+        // Function.prototype.apply(this, context)//through apply
+    }; 
+}
+
+class Lamp {
+    constructor() {
+        this.name = "a lamp";
+    }
+}
+
+const turnOn = function () {
+    console.log("Turning on " + this.name);
+};
+
+const lamp = new Lamp();
+
+turnOn(); // should not work the way we want it to
+
+const boundTurnOn = turnOn.bind(lamp);
+const myBoundTurnOn = turnOn.myBind(lamp);
+
+boundTurnOn(); // should say "Turning on a lamp"
+myBoundTurnOn(); // should say "Turning on a lamp"
