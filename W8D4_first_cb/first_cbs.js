@@ -117,7 +117,7 @@ myBoundTurnOn(); // should say "Turning on a lamp" */
 =============================================
 */
 
-const readline = require("readline");
+/* const readline = require("readline");
 
 const reader = readline.createInterface({
   input: process.stdin,
@@ -135,12 +135,12 @@ function askIfGreaterThan(el1, el2, callback) {
             callback(false);
         }
     });
-}
+} */
 
 // askIfGreaterThan(1,2,function(status){ console.log("exceuted " + status)});
 
 // Once you're done testing askIfGreaterThan with dummy arguments, write this.
-function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop) {
+/* function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop) {
     // Do an "async loop":
     // 1. If (i == arr.length - 1), call outerBubbleSortLoop, letting it
     //    know whether any swap was made.
@@ -150,7 +150,6 @@ function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop) {
     //    next call, and possibly switch madeAnySwaps if you did swap.
     if (i === arr.length - 1) {
         outerBubbleSortLoop(madeAnySwaps);
-        console.log(arr);
     } else {
         askIfGreaterThan(arr[i], arr[i+1], (isGreaterThan) => {
             if (isGreaterThan) {
@@ -162,7 +161,7 @@ function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop) {
     }
 }
 
-innerBubbleSortLoop([4,3,2,1], 0, false, function() {console.log("In outer bubble sort")});
+// innerBubbleSortLoop([4,3,2,1], 0, false, function() {console.log("In outer bubble sort")});
 
 // Once you're done testing innerBubbleSortLoop, write outerBubbleSortLoop.
 // Once you're done testing outerBubbleSortLoop, write absurdBubbleSort.
@@ -171,12 +170,85 @@ function absurdBubbleSort(arr, sortCompletionCallback) {
   function outerBubbleSortLoop(madeAnySwaps) {
     // Begin an inner loop if you made any swaps. Otherwise, call
     // `sortCompletionCallback`.
-  }
 
+    if (madeAnySwaps) {
+        innerBubbleSortLoop(arr, 0, false, outerBubbleSortLoop);
+    } else {
+        sortCompletionCallback(arr);
+    }
+  }
+  
   // Kick the first outer loop off, starting `madeAnySwaps` as true.
+  //here is the line where outerBubbleSortLoop is actually called
+  outerBubbleSortLoop(true);
 }
 
-/* absurdBubbleSort([3, 2, 1], function(arr) {
+absurdBubbleSort([3, 2, 1], function(arr) {
   console.log("Sorted array: " + JSON.stringify(arr));
   reader.close();
 }); */
+
+/* 
+============================================= 
+*/
+
+Function.prototype.myThrottle = function(interval) {
+    let tooSoon = false;
+    return () => {
+        if (tooSoon) {
+            //do nothing
+        } else {
+            tooSoon = true;
+            setTimeout(function() {
+                tooSoon = false;
+            }, interval)
+            // debugger
+            this();
+        }
+    }
+}
+
+class Neuron {
+    fire() {
+        console.log("Firing!");
+    }
+}
+
+const neuron = new Neuron();
+// When we create a new Neuron,
+// we can call #fire as frequently as we want
+
+// The following code will try to #fire the neuron every 10ms. Try it in the console:
+const interval2 = setInterval(() => {
+    neuron.fire();
+}, 10);
+
+// You can use clearInterval to stop the firing:
+clearInterval(interval2);
+
+// Using Function#myThrottle, we should be able to throttle
+// the #fire function of our neuron so that it can only fire
+// once every 500ms:
+
+neuron.fire = neuron.fire.myThrottle(500);
+
+const interval3 = setInterval(() => {
+    neuron.fire();
+}, 10);
+
+// This time, if our Function#myThrottle worked correctly,
+// the Neuron#fire function should only be able to execute
+// every 500ms, even though we're still trying to invoke it
+// every 10ms!
+
+// If we want this behavior for ALL neurons, we can do the same logic in the constructor:
+
+// class Neuron {
+//     constructor() {
+//         this.fire = this.fire.myThrottle(500);
+//     }
+
+//     fire() {
+//         console.log("Firing!");
+//     }
+// }
