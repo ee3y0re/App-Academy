@@ -9,9 +9,15 @@
 
 class FollowToggle {
     constructor(el) {
-        this.userId = $(el.user-id) //el.dataset.user-id
-        this.followState = $(el.initial-follow-state)
+        this.$el = $(el) //jquery wrapped element
+        this.userId = this.$el.data('user-id')
+        this.followState = this.$el.data('initial-follow-state')
+        // debugger
+        console.log(this)
+        //on click
     }
+
+    //render - set text of button
 }
 
 module.exports = FollowToggle;
@@ -52,21 +58,30 @@ var __webpack_exports__ = {};
   !*** ./frontend/twitter.js ***!
   \*****************************/
 //entry point
+//import
 const FollowToggle = __webpack_require__(/*! ./follow_toggle.js */ "./frontend/follow_toggle.js");
 
 // document.addEventListener('DOMContentLoaded', (event) => {
 //     //constructor?
 // });
 
-document.setEventListeners = () => {
-    $('.follow-toggle').on('click', e => {
-        e.preventDefault();
-        //call helper to switch
-    })
-}
+// what is a doc ready cb
+// $ says we want to enter jquery library
+// const = () => {
+//     //jquery search for button follow toggle
+//     $('button.follow-toggle').on('click', e => {
+//         e.preventDefault();
+//         //constructor - call helper to switch follow status
+//     })
+// }
 
 //define helper
 //uses util
+
+$(function(){
+    //grab all follow toggle      //callback
+    $('button.follow-toggle').each((index, button) => new FollowToggle(button))
+})//jquery instructed to run this after doc loaded
 })();
 
 /******/ })()
