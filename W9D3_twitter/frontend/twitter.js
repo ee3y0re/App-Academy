@@ -21,5 +21,8 @@ const FollowToggle = require('./follow_toggle.js');
 
 $(function(){
     //grab all follow toggle      //callback
-    $('button.follow-toggle').each((index, button) => new FollowToggle(button))
+    const buttons = $('button.follow-toggle');
+    buttons.each((index) => {
+        new FollowToggle(buttons.eq(index));
+    })
 })//jquery instructed to run this after doc loaded
