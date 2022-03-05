@@ -1,9 +1,12 @@
 import React from 'react';
+import Clock from './clock';
+
 
 function Root() {
   return (
     <div>
-      This is an empty div from the root
+      
+      <Clock />
     </div>
   )
 }
