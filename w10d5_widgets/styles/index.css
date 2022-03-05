@@ -1,0 +1,14 @@
+@import "./clock.css";
+@import "./reset.css";
+
+#root {
+  font-family: 'Cute Font', cursive;
+  font-size: 55px;
+  color: white;
+}
+
+#rendered-root {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}

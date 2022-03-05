@@ -4,7 +4,7 @@ import Clock from './clock';
 
 function Root() {
   return (
-    <div>
+    <div id="rendered-root">
       <Clock />
     </div>
   )

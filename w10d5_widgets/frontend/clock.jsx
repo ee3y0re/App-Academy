@@ -38,13 +38,23 @@ class Clock extends React.Component {
       seconds = (seconds < 10) ? `0${seconds}` : seconds;
 
       return(
-        <div>
+        <div className="clock-container">
           {/* the goal
           <p>00:00:00 PST</p> */}
           {/* making sure tick is recognized */}
           {/* <p>{this.tick()}</p> */}
-          
-          <p>{hours}:{minutes}:{seconds} PST</p>
+          <h1 className="clock-title">Clock</h1>
+          <div className="time">
+            <span>Time:</span>
+            <span>{hours}:{minutes}:{seconds} PST</span>
+          </div>
+
+          <div className="date">
+            <p>Date:</p>
+            {/* the prompt gave a hint of "human-readable string", search docs for that */}
+            <p>{this.state.time.toDateString()}</p>
+          </div>
+
         </div>
       )
     }
