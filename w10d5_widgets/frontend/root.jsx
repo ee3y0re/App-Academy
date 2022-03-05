@@ -5,7 +5,6 @@ import Clock from './clock';
 function Root() {
   return (
     <div>
-      
       <Clock />
     </div>
   )
