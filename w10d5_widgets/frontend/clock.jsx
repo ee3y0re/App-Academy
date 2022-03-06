@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 class Clock extends React.Component {
@@ -43,7 +44,7 @@ class Clock extends React.Component {
           <p>00:00:00 PST</p> */}
           {/* making sure tick is recognized */}
           {/* <p>{this.tick()}</p> */}
-          <h1 className="clock-title">Clock</h1>
+          <h1 className="clock-title">Tick-Tock Clock</h1>
           <div className="time">
             <span>Time:</span>
             <span>{hours}:{minutes}:{seconds} PST</span>

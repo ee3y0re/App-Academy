@@ -1,7 +1,13 @@
 .tabs-container {
   position: absolute;
-  top: 214px;
-  margin: 20px 400px 20px 20px;
+  left: 458px;
+  /* top: 214px; */
+  /* margin: 5px 20px 20px 20px; */
+}
+
+.tabs-container h1{
+  font-size: 60px;
+  font-weight: bolder;
 }
 
 .tabs-container .tab-title{
@@ -9,31 +15,27 @@
   text-align: center;
 }
 
-h1.tab-title {
-  font-weight: bolder;
-}
-
 .tab-title li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  width: 77px;
-  padding: 10px;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  border-left: 1px solid;
-  border-right: 1px solid;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  background: #88CFEB;
-  background-size: cover;
-  cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 20px;
+width: 77px;
+padding: 10px;
+border-top: 1px solid;
+border-bottom: 1px solid;
+border-left: 1px solid;
+border-right: 1px solid;
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+background: #88D7EB;
+background-size: cover;
+cursor: pointer;
 }
 
 .tab-title li:hover {
   color: white;
-  background-color: #648E9E;
+  background-color: #64929E;
 }
 
 .tab-title > li.forefront {
@@ -51,7 +53,7 @@ h1.tab-title {
   border-left: 1px solid;
   border-right: 1px solid;
   border-bottom: 1px solid;
-  background: #88CFEB;
+  background: #88D7EB;
   width: 255px;
   height: 135px;
 }

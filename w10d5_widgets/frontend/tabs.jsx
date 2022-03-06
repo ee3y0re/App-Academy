@@ -12,10 +12,12 @@ class SubClassHeaders extends React.Component {
       // label/title
       const label = tab.label;
       // toggles the display or show
-      const setClassName = idx === clickedOnTabIdx ? 'active' : "";
+      const setClassName = idx === clickedOnTabIdx ? 'forefront' : "";
       return (
         <li
           key={idx}
+          //what's the point of this className? how can i use it in css
+          //ANSWER to be able to toggle remove the bottom border upon clicking
           className={setClassName}
           /*
           Add a click handler to each header that updates the selected index in the Tabs component.

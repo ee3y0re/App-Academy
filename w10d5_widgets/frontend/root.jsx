@@ -9,13 +9,13 @@ Javascript objects that each have title and content as keys.
 const tabProps = [
   { label: "validation", note: "I know you've been feeling frustrated on how hard this project is."},
   { label: "reassurance", note: "It will be okay! As long as you keep trying, you're bound to figure it out."},
-  { label: "perspective-taking", note: "This isn't a test or a race. This is practice ^^"}
+  { label: "perspective-taking", note: "This isn't a test or a race. This is just practice ^^"}
 ];
 
 function Root() {
   return (
     <div id="rendered-root">
-      {/* <Clock /> */}
+      <Clock />
       {/* without the tabProps={tabProps}, it makes everything undefined */}
       <Tabs tabProps={tabProps}/>
     </div>

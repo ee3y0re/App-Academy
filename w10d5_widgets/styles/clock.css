@@ -1,13 +1,17 @@
 .clock-container {
-  display: flex;
-  flex-direction: column;
-  font-size: 50px;
-  position: absolute;
-  margin: 5px 20px 20px 20px;
-  width: 369px;
-  padding: 25px;
-  background-color: #EB9FAE;
-  border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    font-size: 50px;
+    position: absolute;
+    /* margin: 20px 748px 20px 20px; */
+    top: 20px;
+    left: 20px;
+    width: 369px;
+    padding: 25px;
+    background-color: #EBA0BA;
+    border: 1px solid #9E5C73;
+    border-radius: 20px;
+    height: 231px;
 }
 
 h1.clock-title {
@@ -19,4 +23,11 @@ h1.clock-title {
 .clock-container div {
   display: flex;
   justify-content: space-between;
+  /* align-items: center; */
+}
+
+div.clock-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
