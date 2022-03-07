@@ -1,3 +1,4 @@
+// importing react and each class into the root
 import React from 'react';
 import Clock from './clock';
 import Tabs from './tabs';
