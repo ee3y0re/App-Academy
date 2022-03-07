@@ -1,5 +1,6 @@
 import React from "react"
-import * as Minesweeper from "./minesweeper.js"
+import * as Minesweeper from "/minesweeper.js"
+import Board from "./board.jsx";
 
 class Game extends React.Component{
   constructor(props){
@@ -14,8 +15,12 @@ class Game extends React.Component{
   render(){
     return(
       <div>
-      <span>{this.state.board}</span>
-      <span>{this.updateGame}</span>
+        {/* passing in the board */}
+        {/* inside Board tag are props passing down to board.jsx */}
+        <Board board={this.state.board}
+          // passing down the ability to use function updateGame
+          update={this.updateGame}>
+        </Board>
       </div>
     )
   }
