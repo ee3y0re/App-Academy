@@ -1,0 +1,20 @@
+.grid {
+  display: flex;
+  /* next three lines help center */
+  justify-content: center;
+  margin: auto;
+  width: 50%;
+}
+
+.tile {
+  height: 20px;
+  width: 20px;
+  /* border is shortcut for border width style */
+  border: 2px outset white;
+  background-color: lightgray;
+  text-align: center;
+}
+
+.explored {
+  border-style: inset;
+}

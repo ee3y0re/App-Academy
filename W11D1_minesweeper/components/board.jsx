@@ -38,8 +38,7 @@ class Board extends React.Component {
     });
 
     return(
-      <div>
-        <h1>hello</h1>
+      <div className="grid">
         {/* don't render actual object */}
         {rows}
       </div>
