@@ -1,16 +1,22 @@
 import React from "react";
 
 class Tile extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      tile : this.props.tileObj,
+    }
+  }
   render() {
     let klassName = 'tile';
     let tileState = ""
 
-    if(this.props.tileObj.explored){
-      if(this.props.tileObj.bombed){
+    if(this.state.tile.explored){
+      if(this.state.tile.bombed){
         tileState = "☢";
         klassName = klassName + " bombed";
-      } else if (this.props.tileObj.adjacentBombCount() > 0) {
-        tileState = this.props.tileObj.adjacentBombCount();
+      } else if (this.state.tile.adjacentBombCount() > 0) {
+        tileState = this.state.tile.adjacentBombCount();
         klassName = klassName + " explored";
       } else {
         tileState = " ";
@@ -18,14 +24,14 @@ class Tile extends React.Component {
       }
     }
 
-    if(this.props.tileObj.flagged) {
+    if(this.state.tile.flagged) {
       tileState = "⚑";
       klassName = klassName + " flagged";
     }
 
     return <div 
         className={klassName} 
-        onClick={() => this.props.handle()}> 
+        onClick={() => this.props.update(this.state.tile, false)}> 
         {tileState}
       </div>
   }
