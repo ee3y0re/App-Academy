@@ -1,11 +1,15 @@
-import { RECEIVE_TODOS, RECEIVE_TODO } from "../actions/todo_actions";
+import {
+  RECEIVE_TODOS,
+  RECEIVE_TODO,
+  REMOVE_TODO
+} from "../actions/todo_actions";
 
 const initialState = {
   1: {
     id: 1,
     title: "finish this project",
-    body: "-elhoussine",
-    done: false
+    body: "-elhoussine/-abby",
+    done: true
   },
   2: {
     id: 2,
@@ -26,6 +30,9 @@ const todosReducer = (state = initialState, action) => {
       return nextState;
     case RECEIVE_TODO:
       nextState[action.todo.id] = action.todo;
+      return nextState;
+    case REMOVE_TODO:
+      delete nextState[action.todo.id];
       return nextState;
     default:
       return state;
