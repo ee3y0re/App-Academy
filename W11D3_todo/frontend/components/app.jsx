@@ -1,10 +1,14 @@
 import React from "react";
+import TodoListContainer from "./todos/todo_list_container";
 
 const App = () => {
+  console.log('app!');
+  //debugger;
   return (
-    <h1>
-      Rice, Tuna, Eggs! :D
-    </h1>
+    <div>
+      <h1>TEST</h1>
+      <TodoListContainer />
+    </div>
   );
 }
 

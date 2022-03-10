@@ -9,11 +9,11 @@ import { allTodos } from "./reducers/selectors";
 document.addEventListener("DOMContentLoaded", () => {
   const content = document.getElementById("content");
   const test = <h1>Todos App</h1>;
-
+  console.log('hi chris!');
   const store = configureStore();
 
   //store props gets passed down
-  ReactDOM.render(<Root store={store}/>, content);
+  ReactDOM.render(<Root store={store} />, content);
 
   window.store = store;
   window.receiveTodo = receiveTodo;
