@@ -16,3 +16,12 @@
 ##### W4D2
 
 + Added views for Users and Chirps (delaying likes until auth)
+
+
+##### Personal Abby Notes
++ API util for signing up, logging in, and signing out (frontend/utils/session.js)
++ Actions (frontend/actions/session.js)
++ Session (frontend/reducers/session.js)
++ Session container (frontend/components/session/signup_container.js)
++ Session form (presentational container)
++ Signup route in app.jsx and wrap in React Router (frontend/components/app.jsx)

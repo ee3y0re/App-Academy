@@ -43,6 +43,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'annotate'
   gem 'faker'
+  #dunno if i actually need this but i keep getting bootsnap/setup load error
+  gem 'bootsnap'
 end
 
 group :development do
